@@ -16,8 +16,9 @@ Thumbs.db
 tmp/
 temp/
 
-# Local agent handoff/state files
+# Local agent planning/handoff/state files
 /TASK-HANDOFF.md
+/SKILLS-MIGRATION-PLAN.md
 
 # Node/Python if users add scripts later
 node_modules/
