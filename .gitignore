@@ -16,15 +16,11 @@ Thumbs.db
 tmp/
 temp/
 
-# Local agent planning/handoff/state files
-/TASK-HANDOFF.md
-/SKILLS-MIGRATION-PLAN.md
-
 # Node/Python if users add scripts later
 node_modules/
 __pycache__/
 .venv/
 venv/
 
-# Keep placeholder files when a copied workspace has an otherwise-empty skills folder
+# Keep placeholder files when a copied scaffold directory is intentionally empty
 !.github/skills/.gitkeep
