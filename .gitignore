@@ -1,0 +1,26 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs/temp
+*.log
+tmp/
+temp/
+
+# Node/Python if users add scripts later
+node_modules/
+__pycache__/
+.venv/
+venv/
+
+# Keep skills folder scaffolded but empty until skills are designed
+!.github/skills/.gitkeep
