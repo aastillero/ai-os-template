@@ -379,8 +379,8 @@ Remote URL: https://github.com/aastillero/ai-os-template.git
 Current published commits:
 
 ```text
-RESTORE_COMMIT_PENDING chore: restore handoff and migration plan files
-Full SHA: RESTORE_COMMIT_PENDING
+64a9a33 chore: restore handoff and migration plan files
+Full SHA: 64a9a33aaa94bc0b4da7901f2d19f658bc885116
 
 2c82121 chore: ignore local skill migration plan
 Full SHA: 2c8212111430e2e303c70629f2f7c9afd9692e6b
@@ -418,7 +418,7 @@ Expected current output summary:
 
 ```text
 ## main...origin/main
-RESTORE_COMMIT_PENDING (origin/main, main) chore: restore handoff and migration plan files
+64a9a33 (origin/main, main) chore: restore handoff and migration plan files
 TASK-HANDOFF.md
 SKILLS-MIGRATION-PLAN.md
 # no check-ignore output for either file
@@ -492,7 +492,7 @@ PLAN_HAS_WAVE7=True
 
 Follow the user's latest instruction and verify current git state first.
 
-1. Repository restore is complete as of `RESTORE_COMMIT_PENDING`; verify live state before any new edits.
+1. Repository restore is complete as of `64a9a33aaa94bc0b4da7901f2d19f658bc885116`; verify live state before any new edits.
 2. Optionally test the template by copying `projects/_template/` to a sample project and opening it as a direct project workspace.
 3. Later, test adaptation by creating another role pack, for example Product Owner or QA Lead.
 4. Keep `TASK-HANDOFF.md` and `SKILLS-MIGRATION-PLAN.md` tracked unless the user explicitly asks to remove/version them differently.
