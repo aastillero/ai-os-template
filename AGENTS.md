@@ -18,7 +18,7 @@ Use the 4 C's at both levels:
 
 - Context: what is true, planned, decided, risky, blocked, or unknown.
 - Connections: stakeholders, teams, systems, dependencies, channels, meetings, and links.
-- Capabilities: workflows, templates, prompts, and future skills.
+- Capabilities: workflows, templates, prompts, and skills.
 - Cadence: daily, weekly, monthly, milestone, or cycle-based review rhythms.
 
 ## Root mode vs project focus mode
@@ -82,6 +82,6 @@ Each project should normally contain:
 - `capabilities/`
 - `cadence/`
 
-Future role-level capabilities will live in root `.github/skills/`.
+Approved role-level capabilities live in root `.github/skills/`.
 Future project-specific capabilities will live in project-local `.github/skills/`.
-Do not create `SKILL.md` files unless the user explicitly approves adding skills.
+Do not create additional `SKILL.md` files unless the user explicitly approves adding or changing the skill library.

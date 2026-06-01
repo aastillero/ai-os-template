@@ -1,6 +1,6 @@
 # Task Handoff
 
-Last updated: 2026-06-01T03:50:35+00:00
+Last updated: 2026-06-01T08:10:20+00:00
 
 Use this file to transfer the current project state into a new session. In a new session, ask the agent to read this file first, then continue from the latest user instruction.
 
@@ -16,7 +16,7 @@ This repository is a GitHub Copilot-native Role AI OS starter workspace.
 
 The current role edition is Delivery Lead, but the project must remain easy to translate to other roles later, such as Product Owner, Engineering Manager, QA Lead, Business Analyst, or other software-delivery-adjacent roles.
 
-The workspace now uses Nate Herk's 4 C's as the organizing model at two levels:
+The workspace uses Nate Herk's 4 C's as the organizing model at two levels:
 
 1. Root workspace = role-level AI OS.
 2. `projects/<project-name>/` = project-specific mini AI OS that can also be opened directly as its own workspace.
@@ -30,9 +30,20 @@ The 4 C's are:
 
 ## Current task state
 
-Status: base project scaffold created, generalized into a reusable role template, and refined so every project created inside the workspace follows the 4C model and can function as a standalone project workspace.
+Status: base project scaffold created, generalized into a reusable role template, refined so every project created inside the workspace follows the 4C model, published to GitHub as `aastillero/ai-os-template` on branch `main`, and Copilot skill migration is implemented through Wave 7 and ready to be published from the final-review commit.
 
-### Completed
+Important detail: the prior roadmap only had five waves and 24 serious candidate skills. The latest user instruction was to migrate waves 2 through 6. To satisfy that without adding live integrations, the previously deferred/source-first candidates were promoted into Wave 6:
+
+```text
+pdf-review-and-edit
+linear-board-review
+```
+
+Both Wave 6 skills are standalone-first and work from pasted/extracted/exported content. Direct PDF editing and live Linear API access remain optional/deferred guidance, not default requirements. Wave 7 adds standalone-first PowerPoint deck drafting and editing support without requiring binary `.pptx` generation or editing by default.
+
+## Completed
+
+### Base workspace and publish
 
 - Reviewed Nate Herk AI OS context from the YouTube URL supplied by the user.
 - Reviewed the reference GitHub repository:
@@ -83,14 +94,6 @@ Status: base project scaffold created, generalized into a reusable role template
   context/role-profile.md
   ```
 
-- Renamed role-specific files to template-friendly names:
-
-  ```text
-  context/delivery-lead-role.md -> context/role-profile.md
-  references/delivery-lead-ai-os-framework.md -> references/role-ai-os-framework.md
-  projects/_template/delivery-plan.md -> project work plan concept
-  ```
-
 - Refined the root documentation around the 4 C's:
 
   ```text
@@ -107,54 +110,151 @@ Status: base project scaffold created, generalized into a reusable role template
   cadence/monthly-retro.md
   ```
 
-- Rebuilt `projects/_template/` as a standalone 4C project workspace:
+- Rebuilt `projects/_template/` as a standalone 4C project workspace with local `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `.github/skills/.gitkeep`, and 4C folders:
 
   ```text
-  projects/_template/
-  ├── README.md
-  ├── AGENTS.md
-  ├── .github/
-  │   ├── copilot-instructions.md
-  │   └── skills/.gitkeep
-  ├── context/
-  │   ├── project-brief.md
-  │   ├── current-state.md
-  │   ├── work-plan.md
-  │   ├── status.md
-  │   ├── raid-log.md
-  │   ├── decisions.md
-  │   └── notes/.gitkeep
-  ├── connections/
-  │   ├── stakeholders.md
-  │   ├── dependencies.md
-  │   ├── systems-and-links.md
-  │   ├── communication-map.md
-  │   └── meetings.md
-  ├── capabilities/
-  │   ├── README.md
-  │   ├── workflows.md
-  │   ├── prompts.md
-  │   └── skill-backlog.md
-  └── cadence/
-      ├── daily-focus.md
-      ├── weekly-project-review.md
-      └── milestone-checkpoint.md
+  context/
+  connections/
+  capabilities/
+  cadence/
   ```
 
-- Removed the old flat project-template files that were replaced by the 4C folders:
+- Removed the old flat project-template files that were replaced by the 4C folders.
+- Preserved the no-skills-yet guardrail during the base scaffold. Real skills were only added after later user approval.
+- Renamed the local branch from `master` to `main`.
+- Created and pushed the initial local commit:
 
   ```text
-  projects/_template/PROJECT.md
-  projects/_template/stakeholders.md
-  projects/_template/work-plan.md
-  projects/_template/status.md
-  projects/_template/raid-log.md
-  projects/_template/decisions.md
-  projects/_template/meetings.md
-  projects/_template/notes/
+  5bd5adf feat: initialize role AI OS template
+  Full SHA: 5bd5adffc086e6432728cedd9293761e67ccc8c2
   ```
 
-- Preserved the no-skills-yet guardrail. Skill folders contain `.gitkeep` placeholders only.
+- Added the GitHub remote:
+
+  ```text
+  origin https://github.com/aastillero/ai-os-template.git
+  ```
+
+- Pushed `main` to GitHub and set local `main` to track `origin/main`.
+- Verified the remote repository is reachable at:
+
+  ```text
+  https://github.com/aastillero/ai-os-template
+  ```
+
+### Skills roadmap and migration
+
+- Created the standalone Copilot skills roadmap:
+
+  ```text
+  SKILLS-MIGRATION-PLAN.md
+  ```
+
+- Refocused the roadmap for a standalone GitHub Copilot project with no Hermes workspace dependency.
+- Kept skills standalone-first:
+  - Markdown-only by default.
+  - Repository files and user-provided context only.
+  - No scripts.
+  - No `allowed-tools` frontmatter.
+  - No live SaaS/API integration requirements.
+  - No `.claude/`, `.codex/`, or `.agents/` folders.
+- Added document/PDF output candidates as source-first skills.
+- Added PowerPoint/deck output and editing candidates as source-first skills.
+- Migrated Wave 1 through Wave 7 locally under:
+
+  ```text
+  .github/skills/<skill-name>/SKILL.md
+  ```
+
+## Current Copilot skills
+
+Current root skill count: 28.
+
+### Wave 1 — Starter Delivery Lead skills
+
+```text
+delivery-status-report
+raid-review
+delivery-plan
+stakeholder-update
+meeting-prep-and-follow-up
+decision-record
+```
+
+### Wave 2 — High-value expansions
+
+```text
+document-intake
+teams-meeting-synthesis
+dependency-map
+weekly-delivery-review
+requirements-to-plan
+release-readiness-review
+```
+
+Notes:
+
+- `document-intake` works from pasted/extracted text first. OCR tooling is optional guidance only.
+- `teams-meeting-synthesis` works from pasted/exported transcript text first. Microsoft Graph/Teams integration is optional guidance only.
+
+### Wave 3 — Document, visual, and executive communication
+
+```text
+delivery-infographic
+executive-briefing
+roadmap-communication
+presentation-outline
+word-document-draft
+word-document-edit
+pdf-export
+```
+
+Notes:
+
+- `delivery-infographic` outputs an infographic brief/spec, not generated media.
+- `word-document-draft` and `word-document-edit` are source-first. Actual `.docx` tooling is optional guidance only.
+- `pdf-export` outputs PDF-ready source/spec. Actual rendering tools are optional guidance only.
+
+### Wave 4 — Optional deeper delivery control
+
+```text
+qa-and-acceptance-review
+scope-change-review
+evidence-review
+project-kickoff
+```
+
+### Wave 5 — Tool-specific delivery workflows
+
+```text
+github-issue-triage
+```
+
+Note: works from pasted/exported issue lists. Live GitHub API access is optional/deferred.
+
+### Wave 6 — Source-first deferred adapters
+
+```text
+pdf-review-and-edit
+linear-board-review
+```
+
+Notes:
+
+- `pdf-review-and-edit` works from pasted/extracted PDF text. Direct PDF binary editing is optional/deferred.
+- `linear-board-review` works from pasted/exported Linear-style board data. Live Linear API access is optional/deferred.
+
+### Wave 7 — PowerPoint / deck production adapters
+
+```text
+powerpoint-deck-draft
+powerpoint-deck-edit
+```
+
+Notes:
+
+- `powerpoint-deck-draft` creates PowerPoint-ready Markdown/storyboard content, slide-by-slide copy, speaker notes, and visual direction. Actual `.pptx` generation is optional guidance only.
+- `powerpoint-deck-edit` works from pasted or extracted deck text first. Direct `.pptx` binary editing is optional guidance only.
 
 ## Current design decisions
 
@@ -183,7 +283,7 @@ Status: base project scaffold created, generalized into a reusable role template
 
 6. The root workspace is the role-level AI OS.
 7. Each copied project folder under `projects/<project-name>/` is a project-level AI OS and should work when opened directly.
-8. Root-level future Copilot skills belong under:
+8. Root-level Copilot skills live under:
 
    ```text
    .github/skills/<skill-name>/SKILL.md
@@ -195,8 +295,7 @@ Status: base project scaffold created, generalized into a reusable role template
    projects/<project-name>/.github/skills/<skill-name>/SKILL.md
    ```
 
-10. No skills have been added yet. All `.github/skills/` folders are intentionally placeholders only.
-11. Do not introduce Claude/Codex-specific structure, including:
+10. Do not introduce Claude/Codex-specific structure, including:
 
    ```text
    .claude/
@@ -204,13 +303,13 @@ Status: base project scaffold created, generalized into a reusable role template
    .agents/
    ```
 
-12. Keep the reusable core stable and isolate role-specific assumptions into role profile, role packs, cadence examples, templates, and future role-specific skills.
-13. Keep project-specific facts inside the relevant project folder so project focus mode remains useful.
+11. Keep the reusable core stable and isolate role-specific assumptions into role profile, role packs, cadence examples, templates, and role-specific skills.
+12. Keep project-specific facts inside the relevant project folder so project focus mode remains useful.
+13. Integration-heavy skills must work from pasted/exported/user-provided content first. Live tool/API setup belongs in optional references or future guides only.
 
 ## Important guardrails
 
 - GitHub Copilot only.
-- Do not add `SKILL.md` files until the user explicitly says to start adding skills.
 - Do not use Claude Code, Codex, `.claude/`, `.codex/`, or `.agents/` conventions.
 - Treat this as a reusable Role AI OS template.
 - Treat every copied project folder as a standalone 4C project workspace.
@@ -218,29 +317,32 @@ Status: base project scaffold created, generalized into a reusable role template
 - Keep secrets, credentials, tokens, and unnecessary confidential data out of all files.
 - If adapting to another role, start from `TEMPLATE.md` and `roles/_template/profile.md`.
 - If creating a new project, start from `projects/_template/`.
+- Do not add `allowed-tools`, scripts, browser automation, API clients, shell execution, or live integrations to skills by default.
+- For Word/PDF/PowerPoint skills, keep the default output source-first: Markdown/content, storyboards, speaker notes, edit plans, export specs, and QA checklists.
 
 ## Recommended files to read first in a new session
 
 Read these in order:
 
 1. `TASK-HANDOFF.md`
-2. `README.md`
-3. `WORKSPACE.md`
-4. `TEMPLATE.md`
-5. `QUICKSTART.md`
-6. `.github/copilot-instructions.md`
-7. `AGENTS.md`
-8. `references/role-ai-os-framework.md`
-9. `projects/README.md`
-10. `projects/_template/README.md`
-11. `projects/_template/AGENTS.md`
-12. `projects/_template/.github/copilot-instructions.md`
-13. `projects/_template/context/project-brief.md`
-14. `projects/_template/connections/stakeholders.md`
-15. `projects/_template/capabilities/README.md`
-16. `projects/_template/cadence/daily-focus.md`
-17. `context/role-profile.md`
-18. `roles/README.md`
+2. `SKILLS-MIGRATION-PLAN.md`
+3. `README.md`
+4. `WORKSPACE.md`
+5. `TEMPLATE.md`
+6. `QUICKSTART.md`
+7. `.github/copilot-instructions.md`
+8. `AGENTS.md`
+9. `references/role-ai-os-framework.md`
+10. `projects/README.md`
+11. `projects/_template/README.md`
+12. `projects/_template/AGENTS.md`
+13. `projects/_template/.github/copilot-instructions.md`
+14. `projects/_template/context/project-brief.md`
+15. `projects/_template/connections/stakeholders.md`
+16. `projects/_template/capabilities/README.md`
+17. `projects/_template/cadence/daily-focus.md`
+18. `context/role-profile.md`
+19. `roles/README.md`
 
 ## Suggested new-session prompt
 
@@ -248,38 +350,49 @@ Read these in order:
 Please load the project handoff from:
 /mnt/hermes-workspace/delivery-lead-ai-os-starter/TASK-HANDOFF.md
 
-Then inspect the project state and continue from my latest instruction. Do not add skills yet unless I explicitly ask for skills.
+Then inspect the project state and continue from my latest instruction. Wave 1 through Wave 7 Copilot skills should be present on `main`; verify the latest git status and remote history before making new changes.
 ```
 
 ## Current git state
 
-A local git repository exists, but no initial commit has been made yet.
+The initial scaffold has been committed and pushed to GitHub.
 
-Expected current status: starter files are untracked and ready for review/commit.
-
-Live verification on 2026-06-01T03:50:35+00:00:
+Repository:
 
 ```text
---- git status --short ---
-?? .github/
-?? .gitignore
-?? AGENTS.md
-?? QUICKSTART.md
-?? README.md
-?? TASK-HANDOFF.md
-?? TEMPLATE.md
-?? WORKSPACE.md
-?? cadence/
-?? context/
-?? decisions/
-?? projects/
-?? references/
-?? roles/
-?? templates/
---- git branch/log ---
-master
-fatal: your current branch 'master' does not have any commits yet
+https://github.com/aastillero/ai-os-template
 ```
+
+Branch and remote:
+
+```text
+Local branch: main
+Remote branch: origin/main
+Remote URL: https://github.com/aastillero/ai-os-template.git
+```
+
+Published initial commit:
+
+```text
+5bd5adf feat: initialize role AI OS template
+Full SHA: 5bd5adffc086e6432728cedd9293761e67ccc8c2
+```
+
+Wave 1 through Wave 7 skill-library changes are intended to be committed and pushed to `origin/main` from the final-review session. When resuming, verify the actual latest state instead of relying on this file alone:
+
+```bash
+git fetch origin main
+git status --short --branch
+git log --oneline -3 --decorate origin/main
+```
+
+Expected after successful publish:
+
+```text
+## main...origin/main
+```
+
+The latest commit on `origin/main` should be the skill-library commit that follows the initial scaffold commit.
 
 ## Verification commands for the next session
 
@@ -288,92 +401,70 @@ From the project root:
 ```bash
 python3 - <<'PY'
 from pathlib import Path
-print('SKILL_MD_COUNT=' + str(len(list(Path('.').rglob('SKILL.md')))))
+import re
+root = Path('.')
+skills_dir = root / '.github' / 'skills'
+skills = sorted(skills_dir.glob('*/SKILL.md'))
+all_text = '\n'.join(p.read_text(encoding='utf-8') for p in skills)
+print('SKILL_MD_COUNT=' + str(len(list(root.rglob('SKILL.md')))))
+print('ROOT_SKILL_MD_COUNT=' + str(len(skills)))
+print('TEMPLATE_COUNT=' + str(len(list(skills_dir.glob('*/templates/*.md')))))
+print('REFERENCE_COUNT=' + str(len(list(skills_dir.glob('*/references/*.md')))))
+print('ROOT_SKILLS=' + ','.join(p.parent.name for p in skills))
+print('PLAN_EXISTS=' + str((root / 'SKILLS-MIGRATION-PLAN.md').exists()))
+print('HANDOFF_EXISTS=' + str((root / 'TASK-HANDOFF.md').exists()))
+print('NO_ALLOWED_TOOLS=' + str('allowed-tools' not in all_text and 'allowed_tools' not in all_text))
+print('HAS_CLAUDE_DIR=' + str((root / '.claude').exists()))
+print('HAS_CODEX_DIR=' + str((root / '.codex').exists()))
+print('HAS_AGENTS_DIR=' + str((root / '.agents').exists()))
 PY
-test ! -d .claude && echo NO_CLAUDE
-test ! -d .codex && echo NO_CODEX
-test ! -d .agents && echo NO_AGENTS
-test -f .github/skills/.gitkeep && echo ROOT_SKILLS_PLACEHOLDER_OK
-test -f projects/_template/.github/skills/.gitkeep && echo PROJECT_SKILLS_PLACEHOLDER_OK
-test -f projects/_template/README.md && echo PROJECT_TEMPLATE_README_OK
-test -f projects/_template/AGENTS.md && echo PROJECT_TEMPLATE_AGENTS_OK
-test -f projects/_template/.github/copilot-instructions.md && echo PROJECT_TEMPLATE_COPILOT_OK
-test -d projects/_template/context && echo PROJECT_CONTEXT_OK
-test -d projects/_template/connections && echo PROJECT_CONNECTIONS_OK
-test -d projects/_template/capabilities && echo PROJECT_CAPABILITIES_OK
-test -d projects/_template/cadence && echo PROJECT_CADENCE_OK
 ```
 
-Expected output:
+Expected current output summary:
 
 ```text
-SKILL_MD_COUNT=0
-NO_CLAUDE
-NO_CODEX
-NO_AGENTS
-ROOT_SKILLS_PLACEHOLDER_OK
-PROJECT_SKILLS_PLACEHOLDER_OK
-PROJECT_TEMPLATE_README_OK
-PROJECT_TEMPLATE_AGENTS_OK
-PROJECT_TEMPLATE_COPILOT_OK
-PROJECT_CONTEXT_OK
-PROJECT_CONNECTIONS_OK
-PROJECT_CAPABILITIES_OK
-PROJECT_CADENCE_OK
+SKILL_MD_COUNT=28
+ROOT_SKILL_MD_COUNT=28
+TEMPLATE_COUNT=28
+REFERENCE_COUNT=12
+PLAN_EXISTS=True
+HANDOFF_EXISTS=True
+NO_ALLOWED_TOOLS=True
+HAS_CLAUDE_DIR=False
+HAS_CODEX_DIR=False
+HAS_AGENTS_DIR=False
 ```
 
-Latest verification output:
+Latest verification output after Wave 1 through Wave 7 migration:
 
 ```text
-SKILL_MD_COUNT=0
-NO_CLAUDE
-NO_CODEX
-NO_AGENTS
-ROOT_SKILLS_PLACEHOLDER_OK
-PROJECT_SKILLS_PLACEHOLDER_OK
-OK projects/_template/README.md
-OK projects/_template/AGENTS.md
-OK projects/_template/.github/copilot-instructions.md
-OK projects/_template/context/project-brief.md
-OK projects/_template/context/current-state.md
-OK projects/_template/context/work-plan.md
-OK projects/_template/context/status.md
-OK projects/_template/context/raid-log.md
-OK projects/_template/context/decisions.md
-OK projects/_template/context/notes/.gitkeep
-OK projects/_template/connections/stakeholders.md
-OK projects/_template/connections/dependencies.md
-OK projects/_template/connections/systems-and-links.md
-OK projects/_template/connections/communication-map.md
-OK projects/_template/connections/meetings.md
-OK projects/_template/capabilities/README.md
-OK projects/_template/capabilities/workflows.md
-OK projects/_template/capabilities/prompts.md
-OK projects/_template/capabilities/skill-backlog.md
-OK projects/_template/cadence/daily-focus.md
-OK projects/_template/cadence/weekly-project-review.md
-OK projects/_template/cadence/milestone-checkpoint.md
-REMOVED projects/_template/PROJECT.md
-REMOVED projects/_template/stakeholders.md
-REMOVED projects/_template/work-plan.md
-REMOVED projects/_template/status.md
-REMOVED projects/_template/raid-log.md
-REMOVED projects/_template/decisions.md
-REMOVED projects/_template/meetings.md
-REMOVED projects/_template/notes
-secret_scan_matches=0
+VALIDATION_RESULT=PASS
+ROOT_SKILL_MD_COUNT=28
+ALL_SKILL_MD_COUNT=28
+TEMPLATE_COUNT=28
+REFERENCE_COUNT=12
+ROOT_SKILLS=decision-record,delivery-infographic,delivery-plan,delivery-status-report,dependency-map,document-intake,evidence-review,executive-briefing,github-issue-triage,linear-board-review,meeting-prep-and-follow-up,pdf-export,pdf-review-and-edit,powerpoint-deck-draft,powerpoint-deck-edit,presentation-outline,project-kickoff,qa-and-acceptance-review,raid-review,release-readiness-review,requirements-to-plan,roadmap-communication,scope-change-review,stakeholder-update,teams-meeting-synthesis,weekly-delivery-review,word-document-draft,word-document-edit
+ROOT_SKILLS_MATCH_EXPECTED=True
+FRONTMATTER_OK=True
+NO_ALLOWED_TOOLS=True
+NO_FORBIDDEN_DIRS=True
+PLAN_HAS_WAVE7=True
 ```
 
 ## Remaining work / likely next steps
 
-Do not assume these are approved. Ask or follow the user's latest instruction.
+Follow the user's latest instruction and verify current git state first.
 
-1. User review of the refined 4C structure.
-2. Decide whether to make the first git commit.
-3. Optionally test the template by copying `projects/_template/` to a sample project and opening it as a direct project workspace.
-4. Decide which Delivery Lead workflows should become the first Copilot skills.
-5. Only after explicit approval, create `.github/skills/<skill-name>/SKILL.md` files or project-local `projects/<project-name>/.github/skills/<skill-name>/SKILL.md` files.
-6. Later, test adaptation by creating another role pack, for example Product Owner or QA Lead.
+1. If the final-review commit has not yet been published, commit and push the Wave 1 through Wave 7 skill library to `origin/main`.
+2. After publish, optionally test the template by copying `projects/_template/` to a sample project and opening it as a direct project workspace.
+3. Later, test adaptation by creating another role pack, for example Product Owner or QA Lead.
+
+## Final review notes
+
+Final review before commit/push found and resolved two publication blockers:
+
+1. Root docs still described `.github/skills/` as future-only or empty. Updated `README.md`, `WORKSPACE.md`, `.github/copilot-instructions.md`, and `AGENTS.md` to reflect the approved role-level skill library.
+2. Six Wave 1 skills had less explicit standalone guardrails. Standardized their boundaries to require repository/user-provided context only, no invented facts, no secrets, and no commands/APIs/live integrations by default.
 
 ## Blockers
 
@@ -383,11 +474,12 @@ None currently.
 
 - Do not rebuild the project from scratch; the scaffold already exists.
 - Do not accidentally convert this into a Claude/Codex project.
-- Do not add skills prematurely.
+- Do not add `allowed-tools`, scripts, or live integrations by default.
 - Do not overfit all documents to Delivery Lead; this must remain portable to other roles.
 - Do not rely on memory alone; read the project files before editing.
 - Do not reintroduce the old flat project template unless the user explicitly prefers it.
 - Do not put project-specific facts only in the root workspace; project focus mode depends on project-local context.
+- Do not treat direct PDF editing, `.docx` or `.pptx` binary editing/generation, GitHub API access, Teams/Graph access, or Linear API access as default skill requirements.
 
 ## Handoff update rule
 

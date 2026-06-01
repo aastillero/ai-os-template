@@ -24,7 +24,7 @@ Use the 4 C's at both workspace levels:
 
 - Context: role/project facts, current state, plans, decisions, risks, boundaries.
 - Connections: stakeholders, teams, systems, dependencies, links, meetings, channels.
-- Capabilities: workflows, templates, prompts, and future Copilot skills.
+- Capabilities: workflows, templates, prompts, and Copilot skills.
 - Cadence: daily, weekly, monthly, milestone, or cycle-based rhythms.
 
 ## Project focus mode
@@ -82,7 +82,7 @@ For future role editions, replace this lens by updating `context/role-profile.md
 - Repeatable operating rhythms live in `cadence/` and project-local `cadence/` folders.
 - Reusable document patterns live in `templates/`.
 - Reusable role packs live in `roles/<role-name>/`.
-- Future role-level Copilot skills will live in root `.github/skills/`.
+- Role-level Copilot skills live in root `.github/skills/`.
 - Future project-specific Copilot skills will live in project-local `.github/skills/`.
 
 ## Security boundaries

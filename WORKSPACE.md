@@ -12,7 +12,7 @@ Every level of the workspace should be organized around the 4 C's.
 |---|---|
 | Context | The facts, goals, current state, plans, decisions, risks, and boundaries the AI needs to understand. |
 | Connections | Stakeholders, teams, systems, dependencies, communication paths, meetings, and links. |
-| Capabilities | Reusable workflows, templates, prompts, and future Copilot skills. |
+| Capabilities | Reusable workflows, templates, prompts, and Copilot skills. |
 | Cadence | Daily, weekly, monthly, milestone, or cycle-based rituals that keep work moving. |
 
 The root workspace applies the 4 C's to the role. Each project workspace applies the 4 C's to a specific project or workstream.
@@ -78,13 +78,13 @@ templates/
 
 ### 6. Skills
 
-Future role-level Copilot skills will live here:
+Role-level Copilot skills live here:
 
 ```text
 .github/skills/
 ```
 
-This base project intentionally leaves the skills folder empty until the skill set is designed.
+The initial skill library is Markdown-first and source-first. Skills should use repository context and user-provided context by default. Add executable automation, live integrations, or project-specific skills only after explicit approval.
 
 ## Project workspace model
 

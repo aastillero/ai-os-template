@@ -2,7 +2,7 @@
 
 A GitHub Copilot-native starter workspace for building a role-specific AI operating system.
 
-This repository is currently configured for Software Development Delivery Leads, but the structure is intentionally reusable. The reusable core can support other roles later by swapping the role profile, role examples, project/workstream templates, cadence prompts, and future `.github/skills/`.
+This repository is currently configured for Software Development Delivery Leads, but the structure is intentionally reusable. The reusable core can support other roles later by swapping the role profile, role examples, project/workstream templates, cadence prompts, and role-level `.github/skills/`.
 
 ## Template stance
 
@@ -16,7 +16,7 @@ The workspace has two levels:
    - role context
    - cross-project cadence
    - reusable templates
-   - future role-level skills
+   - role-level skill library
 
 2. Project-level AI OS workspaces
    - one folder per project or workstream under `projects/`
@@ -33,7 +33,7 @@ Both the root workspace and every project workspace should follow the 4 C's.
 |---|---|---|---|
 | Context | What the AI needs to know | `context/role-profile.md` | `projects/<project>/context/` |
 | Connections | People, systems, dependencies, channels | role collaborators and operating context | `projects/<project>/connections/` |
-| Capabilities | Reusable workflows, prompts, and future skills | `templates/`, `.github/skills/` | `projects/<project>/capabilities/`, project `.github/skills/` |
+| Capabilities | Reusable workflows, prompts, and skills | `templates/`, `.github/skills/` | `projects/<project>/capabilities/`, project `.github/skills/` |
 | Cadence | Operating rhythms | `cadence/` | `projects/<project>/cadence/` |
 
 ## Current audience
@@ -75,6 +75,10 @@ delivery-lead-ai-os-starter/          # role-level AI OS; template can be copied
 ├── .github/
 │   ├── copilot-instructions.md
 │   └── skills/
+│       ├── <skill-name>/
+│       │   ├── SKILL.md
+│       │   ├── templates/
+│       │   └── references/
 │       └── .gitkeep
 ├── roles/
 │   ├── README.md
@@ -121,11 +125,11 @@ delivery-lead-ai-os-starter/          # role-level AI OS; template can be copied
 - Root agent behavior lives in root `AGENTS.md`.
 - Active role context lives in `context/role-profile.md`.
 - Reusable role packs live in `roles/<role-name>/`.
-- Future role-level skills will live in root `.github/skills/<skill-name>/SKILL.md`.
+- Role-level Copilot skills live in root `.github/skills/<skill-name>/SKILL.md`.
 - Project-specific Copilot behavior lives in `projects/<project-name>/.github/copilot-instructions.md`.
 - Project-specific agent behavior lives in `projects/<project-name>/AGENTS.md`.
 - Future project-specific skills will live in `projects/<project-name>/.github/skills/<skill-name>/SKILL.md`.
-- This base project intentionally does not include skills yet. Skill folders are only scaffolded with `.gitkeep` files.
+- This project includes an initial Markdown-first role-level skill library. Add project-specific skills only after a repeated project workflow is clear and approved.
 
 ## Suggested first use
 
