@@ -4,10 +4,6 @@ This repository is a Role AI OS starter workspace. It is currently configured as
 
 Copilot should treat this as a structured operating workspace for a role holder, not as a normal application codebase.
 
-## Task handoff
-
-When continuing this project in a new chat/session, read `TASK-HANDOFF.md` first. It captures the current project state, decisions, guardrails, verification commands, and likely next steps. Use the user's latest instruction as the active task after loading that context.
-
 ## Role source of truth
 
 Before giving role-specific advice, use:

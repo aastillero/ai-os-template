@@ -69,7 +69,6 @@ delivery-lead-ai-os-starter/          # role-level AI OS; template can be copied
 ├── README.md
 ├── QUICKSTART.md
 ├── TEMPLATE.md
-├── TASK-HANDOFF.md
 ├── AGENTS.md
 ├── WORKSPACE.md
 ├── .github/
@@ -160,16 +159,6 @@ That folder has its own:
 - `.github/skills/`
 
 This lets the project behave like a normal standalone workspace while still fitting inside the broader role-level AI OS.
-
-## Continuing work in a new session
-
-For session-to-session continuity, read `TASK-HANDOFF.md` first. It captures current project state, decisions, guardrails, verification commands, and likely next steps.
-
-Suggested prompt:
-
-```text
-Please load TASK-HANDOFF.md from this project, then continue from my latest instruction.
-```
 
 ## Adapting to another role
 

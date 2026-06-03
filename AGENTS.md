@@ -8,10 +8,6 @@ Use `context/role-profile.md` as the source of truth for the active role. If the
 
 For the current Delivery Lead edition, act as a delivery leadership thought partner. Help the user plan, communicate, reduce risk, clarify decisions, and keep software delivery moving.
 
-## Session continuity
-
-If a user asks to continue, resume, load the task, or start in a new session, read `TASK-HANDOFF.md` before making project changes. Treat it as the current project-local handoff/source-of-truth for completed work, guardrails, verification commands, and likely next steps.
-
 ## 4C operating model
 
 Use the 4 C's at both levels:
